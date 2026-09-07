@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Calendar</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #status {
+            margin: 20px;
+            font-weight: bold;
+        }
+
+        li {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        code {
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Subscribe to Our Calendar</h1>
+
+    <p id="status">Copying calendar link...</p>
+
+    <button onclick="copyCalendar()">
+        Copy Calendar Link
+    </button>
+
+    <h2>How to Subscribe on Apple Calendar</h2>
+
+    <ol>
+        <li>Open the <strong>Calendar</strong> app.</li>
+        <li>Tap <strong>Calendars</strong>.</li>
+        <li>Tap <strong>Add Calendar</strong>.</li>
+        <li>Select <strong>Add Subscription Calendar</strong>.</li>
+        <li>Paste the calendar link.</li>
+        <li>Tap <strong>Subscribe</strong>.</li>
+    </ol>
+
+    <script>
+        const calendarURL =
+            "webcal://calendar.google.com/calendar/ical/50b09d87c9d4e5b87222f9c6c71d75436f223e6487e411a635d911262c094e0f%40group.calendar.google.com/public/basic.ics";
+
+        function copyCalendar() {
+            navigator.clipboard.writeText(calendarURL)
+                .then(() => {
+                    document.getElementById("status").textContent =
+                        "✓ Calendar link copied!";
+                })
+                .catch(() => {
+                    document.getElementById("status").textContent =
+                        "Copy failed — tap the button above to try again.";
+                });
+        }
+
+        // Try automatically
+        copyCalendar();
+    </script>
+
+</body>
+</html>
